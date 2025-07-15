@@ -484,8 +484,8 @@
           <!-- <label for="chapterSelect"><i class="fas fa-book"></i> 章节:</label> -->
           <select id="chapterSelect">
             <option value="chapter1">第一章 - 刑法基础论</option>
-            <option value="chapter2">第二章 - 犯罪构成</option>
-            <option value="chapter3">第三章 - 排除犯罪事由</option>
+            <option value="chapter2">第二章 - 犯罪概念</option>
+            <option value="chapter3">第三章 - 犯罪构成</option>
             <option value="chapter4">第四章 - 故意犯罪形态</option>
             <option value="chapter5">第五章 - 共同犯罪</option>
           </select>
@@ -524,7 +524,9 @@
     <script src="./js/markmap-view.min.js"></script>
     <script type="text/javascript" src="./js/chapter1.js"></script>
     <script type="text/javascript" src="./js/chapter2.js"></script>
+    <script type="text/javascript" src="./js/chapter3.js"></script>
 
+    
     <script>
       // 保存Markmap实例
       let mm;
@@ -540,57 +542,7 @@
       const chaptersData = {
         chapter1: chapter1,
         chapter2: chapter2,
-        chapter3: {
-          title: '第三章 - 排除犯罪事由',
-          content: '排除犯罪事由',
-          children: [
-            {
-              content: '一、正当防卫',
-              children: [
-                {
-                  content: '正当防卫的概念',
-                  children: [{content: '为保护合法权益'}, {content: '对不法侵害人实施'}],
-                },
-                {
-                  content: '正当防卫的条件',
-                  children: [
-                    {content: '存在不法侵害'},
-                    {content: '不法侵害正在进行'},
-                    {content: '防卫意识'},
-                    {content: '针对侵害人本人'},
-                    {content: '未明显超过必要限度'},
-                  ],
-                },
-                {
-                  content: '特殊防卫',
-                  children: [
-                    {content: '针对严重危及人身安全的暴力犯罪'},
-                    {content: '造成不法侵害人伤亡不负刑责'},
-                  ],
-                },
-              ],
-            },
-            {
-              content: '二、紧急避险',
-              children: [
-                {
-                  content: '紧急避险的概念',
-                  children: [{content: '为保护合法权益'}, {content: '不得已损害较小权益'}],
-                },
-                {
-                  content: '紧急避险的条件',
-                  children: [
-                    {content: '合法权益面临现实危险'},
-                    {content: '危险正在发生'},
-                    {content: '迫不得已'},
-                    {content: '避险意识'},
-                    {content: '未超过必要限度'},
-                  ],
-                },
-              ],
-            },
-          ],
-        },
+        chapter3: chapter3,
         chapter4: {
           title: '第四章 - 故意犯罪形态',
           content: '故意犯罪形态',
