@@ -275,4 +275,4 @@ var chapter4 = {
         }
     ],
     payload: { tag: 'h1', lines: ' ' }
-};
+}
