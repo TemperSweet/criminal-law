@@ -504,7 +504,8 @@
     <script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/markmap-view@0.16.0/dist/browser/index.js"></script>
 
-    <script src="./chapter1.js"></script>
+    <script type="text/javascript" src="./js/chapter1.js"></script>
+
     <script>
       // 保存Markmap实例
       let mm;
@@ -517,9 +518,8 @@
       let isHeaderCollapsed = false;
       let isFullscreen = false;
 
-      // 章节数据 - 实际项目中这些数据可以放在外部文件中
       const chaptersData = {
-        chapter1: CHAPTER1,
+        chapter1: chapter1,
         chapter2: {
           title: '第二章 - 犯罪构成',
           content: '犯罪构成',
