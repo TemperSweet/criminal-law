@@ -486,8 +486,8 @@
             <option value="chapter1">第一章 - 刑法基础论</option>
             <option value="chapter2">第二章 - 犯罪概念</option>
             <option value="chapter3">第三章 - 犯罪构成</option>
-            <option value="chapter4">第四章 - 故意犯罪形态</option>
-            <option value="chapter5">第五章 - 共同犯罪</option>
+            <option value="chapter4">第四章 - 犯罪客体</option>
+            <option value="chapter5">第五章 - 犯罪客观方面</option>
           </select>
           <!-- </div> -->
         </div>
@@ -525,6 +525,8 @@
     <script type="text/javascript" src="./js/chapter1.js"></script>
     <script type="text/javascript" src="./js/chapter2.js"></script>
     <script type="text/javascript" src="./js/chapter3.js"></script>
+    <script type="text/javascript" src="./js/chapter5.js"></script>
+
 
     
     <script>
@@ -543,61 +545,8 @@
         chapter1: chapter1,
         chapter2: chapter2,
         chapter3: chapter3,
-        chapter4: {
-          title: '第四章 - 故意犯罪形态',
-          content: '故意犯罪形态',
-          children: [
-            {
-              content: '一、犯罪既遂',
-              children: [{content: '犯罪构成要件全部齐备'}, {content: '结果犯、行为犯、危险犯'}],
-            },
-            {
-              content: '二、犯罪预备',
-              children: [
-                {content: '为犯罪准备工具、创造条件'},
-                {content: '由于意志以外的原因未能着手'},
-              ],
-            },
-            {
-              content: '三、犯罪未遂',
-              children: [{content: '已经着手实行犯罪'}, {content: '由于意志以外的原因未得逞'}],
-            },
-            {
-              content: '四、犯罪中止',
-              children: [
-                {content: '在犯罪过程中自动放弃犯罪'},
-                {content: '自动有效地防止犯罪结果发生'},
-              ],
-            },
-          ],
-        },
-        chapter5: {
-          title: '第五章 - 共同犯罪',
-          content: '共同犯罪',
-          children: [
-            {
-              content: '一、共同犯罪概述',
-              children: [{content: '二人以上共同故意犯罪'}, {content: '共同犯罪的构成要件'}],
-            },
-            {
-              content: '二、共同犯罪的形式',
-              children: [
-                {content: '任意共同犯罪与必要共同犯罪'},
-                {content: '事前通谋与事前无通谋'},
-                {content: '简单共同犯罪与复杂共同犯罪'},
-              ],
-            },
-            {
-              content: '三、共同犯罪人的分类',
-              children: [
-                {content: '主犯'},
-                {content: '从犯'},
-                {content: '胁从犯'},
-                {content: '教唆犯'},
-              ],
-            },
-          ],
-        },
+        chapter4: chapter4,
+        chapter5: chapter5
       };
 
       // 初始化思维导图
