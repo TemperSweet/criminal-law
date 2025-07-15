@@ -111,4 +111,4 @@ var chapter2 = {
         }
     ],
     payload: { tag: 'h1', lines: ' ' }
-};
+}
