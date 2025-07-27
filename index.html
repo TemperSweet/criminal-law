@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>刑法学习系统 - 思维导图</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+        color: #333;
+        line-height: 1.6;
+        touch-action: manipulation;
+        overflow: hidden;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        padding: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 15px;
+        background: linear-gradient(to right, #2c3e50, #1a2a3a);
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 10;
+        transition: all 0.3s ease;
+      }
+
+      .header-top {
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .toggle-header-btn {
+        background: rgba(255, 255, 255, 0.15);
+        border: none;
+        color: white;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-right: 12px;
+        flex-shrink: 0;
+      }
+
+      .toggle-header-btn:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+      }
+
+      .header h1 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        text-align: left;
+        /* margin-bottom: 10px; */
+        flex: 1;
+      }
+
+      .controls {
+        margin-top: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 8px;
+        width: 100%;
+        transition: all 0.3s ease;
+      }
+
+      .control-btn {
+        background: rgba(255, 255, 255, 0.15);
+        border: none;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        flex: 1;
+        min-width: 100px;
+        justify-content: center;
+      }
+
+      .control-btn:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+      }
+
+      .control-btn:active {
+        transform: translateY(0);
+      }
+
+      .control-btn i {
+        font-size: 1rem;
+      }
+
+      #mindmap-container {
+        flex: 1;
+        display: flex;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        background: white;
+        position: relative;
+        touch-action: pan-x pan-y;
+        transition: all 0.3s ease;
+      }
+
+      #mindmap {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        padding: 20px;
+        background: #fff;
+      }
+
+      /* 章节选择器样式 */
+      .chapter-selector {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 6px;
+        padding: 8px 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        z-index: 100;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-left: 20px;
+      }
+
+      .chapter-selector select {
+        background: rgba(44, 62, 80, 0.9);
+        color: white;
+        border: none;
+        padding: 6px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        min-width: 150px;
+      }
+
+      .chapter-selector select:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.5);
+      }
+
+      /* 缩放指示器 */
+      .zoom-indicator {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 6px 12px;
+        border-radius: 16px;
+        font-size: 0.8rem;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      /* 旋转按钮 */
+      .rotation-control {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        z-index: 100;
+        transition: transform 0.3s ease;
+      }
+
+      .rotation-control:hover {
+        transform: rotate(30deg);
+      }
+
+      /* 全屏按钮 */
+      .fullscreen-control {
+        /* position: absolute;
+        bottom: 15px;
+        right: 70px; */
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 100;
+        transition: all 0.3s ease;
+      }
+
+      .fullscreen-control:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: scale(1.1);
+      }
+
+      /* 节点样式覆盖 */
+      .markmap-node {
+        cursor: pointer;
+      }
+
+      .markmap-node-circle {
+        r: 5px;
+      }
+
+      .markmap-node-text {
+        font-size: 14px !important;
+      }
+
+      .markmap-link {
+        stroke-width: 1.5px !important;
+      }
+
+      /* 响应式调整 */
+      @media (max-width: 768px) {
+        .header {
+          padding: 10px 12px;
+        }
+
+        .header h1 {
+          font-size: 1.2rem;
+          /* margin-bottom: 8px; */
+        }
+
+        .control-btn {
+          padding: 6px 10px;
+          font-size: 0.8rem;
+          min-width: 80px;
+        }
+
+        #mindmap {
+          padding: 15px;
+        }
+
+        .rotation-control {
+          top: 10px;
+          right: 10px;
+          width: 32px;
+          height: 32px;
+        }
+
+        .zoom-indicator {
+          bottom: 10px;
+          right: 10px;
+          padding: 5px 10px;
+          font-size: 0.75rem;
+        }
+
+        .fullscreen-control {
+          bottom: 10px;
+          right: 60px;
+          width: 30px;
+          height: 30px;
+        }
+
+        .chapter-selector {
+          padding: 6px 10px;
+        }
+
+        .chapter-selector select {
+          min-width: 120px;
+          padding: 5px 8px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header h1 {
+          font-size: 1.1rem;
+        }
+
+        .control-btn {
+          padding: 5px 8px;
+          font-size: 0.75rem;
+          min-width: 70px;
+        }
+
+        #mindmap {
+          padding: 10px;
+        }
+
+        .controls {
+          gap: 4px;
+        }
+
+        .toggle-header-btn {
+          width: 32px;
+          height: 32px;
+          margin-right: 8px;
+        }
+
+        .chapter-selector {
+          padding: 5px 8px;
+          margin-left: 8px;
+        }
+
+        .chapter-selector select {
+          min-width: 100px;
+          padding: 4px 6px;
+        }
+      }
+
+      /* 旋转状态 */
+      .rotated {
+        transform: rotate(90deg);
+      }
+
+      /* 移动端提示 */
+      .mobile-tip {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(0, 0, 0, 0.7);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        z-index: 200;
+        text-align: center;
+        max-width: 80%;
+        animation: fadeOut 3s forwards;
+      }
+
+      @keyframes fadeOut {
+        0% {
+          opacity: 1;
+        }
+        70% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          display: none;
+        }
+      }
+
+      /* 头部收起状态 */
+      .header-collapsed .header {
+        height: 60px;
+        padding: 8px 15px;
+        overflow: hidden;
+      }
+
+      .header-collapsed .controls {
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+        margin: 0;
+      }
+
+      .header-collapsed .header h1 {
+        margin-bottom: 0;
+        text-align: left;
+      }
+
+      .header-collapsed .toggle-header-btn i {
+        transform: rotate(180deg);
+      }
+
+      /* 全屏样式 */
+      .fullscreen {
+        padding: 0 !important;
+      }
+
+      .fullscreen .header {
+        border-radius: 0;
+        margin-bottom: 0;
+      }
+
+      .fullscreen #mindmap-container {
+        border-radius: 0;
+      }
+
+      /* 全屏模式 */
+      .fullscreen-mode .header,
+      .fullscreen-mode .controls,
+      .fullscreen-mode .chapter-selector,
+      .fullscreen-mode .rotation-control,
+      .fullscreen-mode .zoom-indicator,
+      .fullscreen-mode .fullscreen-control,
+      .fullscreen-mode .mobile-tip {
+        display: none !important;
+      }
+
+      .fullscreen-mode #mindmap-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 9999;
+        padding: 0;
+        background: white;
+      }
+
+      .fullscreen-mode #mindmap {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+      }
+
+      /* 加载指示器 */
+      .loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(52, 152, 219, 0.3);
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 100;
+        display: none;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: translate(-50%, -50%) rotate(0deg);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-top">
+          <button class="toggle-header-btn" id="toggleHeaderBtn">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+          <h1>刑法学习系统 - 思维导图</h1>
+
+          <select id="chapterSelect">
+            <option value="chapter1">第一章 - 刑法基础论</option>
+            <option value="chapter2">第二章 - 犯罪概念</option>
+            <option value="chapter3">第三章 - 犯罪构成</option>
+            <option value="chapter4">第四章 - 犯罪客体</option>
+            <option value="chapter5">第五章 - 犯罪客观方面</option>
+            <option value="chapter6">第六章 - 犯罪主体</option>
+            <option value="chapter7">第七章 - 犯罪主观方面</option>
+            <option value="chapter8">第八章 - 正当化事由</option>
+            <option value="chapter9">第九章 - 故意犯罪的停止形态</option>
+            <option value="chapter10">第十章 - 共同犯罪</option>
+            <option value="chapter11">第十一章 罪数形态</option>
+            <option value="chapter12">第十二章 刑事责任</option>
+            <option value="chapter13">第十三章 刑罚概述</option>
+            <option value="chapter14">第十四章 量刑</option>
+            <option value="chapter15">第十五章 刑罚执行制度</option>
+            <option value="chapter16">第十六章 刑罚消灭制度</option>
+            <option value="chapter17">第十七章 刑法各论概述</option>
+            <option value="chapter18">第十八章 危害国家安全罪</option>
+            <option value="chapter19">第十九章 危害公共安全罪</option>
+            <option value="chapter20">第二十章 破坏社会主义市场经济秩序罪</option>
+            <option value="chapter21">第二十一章 侵犯公民人身权利、民主权利罪</option>
+            <option value="chapter22">第二十二章 侵犯财产罪</option>
+            <option value="chapter23">第二十三章 妨害社会管理秩序罪</option>
+            <option value="chapter24">第二十四章 贪污贿赂罪</option>
+            <option value="chapter25">第二十五章 渎职罪</option>
+          </select>
+        </div>
+        <div class="controls">
+          <button class="control-btn" id="zoomInBtn">
+            <i class="fas fa-search-plus"></i> 放大
+          </button>
+          <button class="control-btn" id="zoomOutBtn">
+            <i class="fas fa-search-minus"></i> 缩小
+          </button>
+          <button class="control-btn" id="resetBtn">
+            <i class="fas fa-sync-alt"></i> 重置视图
+          </button>
+          <div class="control-btn" id="fullscreenBtn" title="全屏">
+            <i class="fas fa-expand"></i>全屏
+          </div>
+        </div>
+      </div>
+
+      <div id="mindmap-container">
+        <svg id="mindmap"></svg>
+        <div class="loader" id="loader"></div>
+        <div class="zoom-indicator">
+          <i class="fas fa-search"></i>
+          <span>缩放: <span id="zoomLevel">100%</span></span>
+        </div>
+
+        <div class="mobile-tip" id="mobileTip">双指可缩放/拖动导图</div>
+      </div>
+    </div>
+
+    <script src="./js/d3.min.js"></script>
+    <script src="./js/markmap-view.min.js"></script>
+    <script type="text/javascript" src="./js/chapter1.js"></script>
+    <script type="text/javascript" src="./js/chapter2.js"></script>
+    <script type="text/javascript" src="./js/chapter3.js"></script>
+    <script type="text/javascript" src="./js/chapter4.js"></script>
+    <script type="text/javascript" src="./js/chapter5.js"></script>
+    <script type="text/javascript" src="./js/chapter6.js"></script>
+    <script type="text/javascript" src="./js/chapter7.js"></script>
+    <script type="text/javascript" src="./js/chapter8.js"></script>
+    <script type="text/javascript" src="./js/chapter9.js"></script>
+    <script type="text/javascript" src="./js/chapter10.js"></script>
+    <script type="text/javascript" src="./js/chapter11.js"></script>
+    <script type="text/javascript" src="./js/chapter12.js"></script>
+    <script type="text/javascript" src="./js/chapter13.js"></script>
+    <script type="text/javascript" src="./js/chapter14.js"></script>
+    <script type="text/javascript" src="./js/chapter15.js"></script>
+    <script type="text/javascript" src="./js/chapter16.js"></script>
+    <script type="text/javascript" src="./js/chapter17.js"></script>
+    <script type="text/javascript" src="./js/chapter18.js"></script>
+    <script type="text/javascript" src="./js/chapter19.js"></script>
+    <script type="text/javascript" src="./js/chapter20.js"></script>
+    <script type="text/javascript" src="./js/chapter21.js"></script>
+    <script type="text/javascript" src="./js/chapter22.js"></script>
+    <script type="text/javascript" src="./js/chapter23.js"></script>
+    <script type="text/javascript" src="./js/chapter24.js"></script>
+    <script type="text/javascript" src="./js/chapter25.js"></script>
+
+    
+    <script>
+      // 保存Markmap实例
+      let mm;
+      // 保存当前展开状态
+      let expandedLevel = 2; // 默认展开第二层
+
+      // 初始化变量
+      let zoomLevel = 1;
+      let isRotated = false;
+      let isHeaderCollapsed = false;
+      let isFullscreen = false;
+
+      const chaptersData = {
+        chapter1: chapter1,
+        chapter2: chapter2,
+        chapter3: chapter3,
+        chapter4: chapter4,
+        chapter5: chapter5,
+        chapter6: chapter6,
+        chapter7: chapter7,
+        chapter8: chapter8,
+        chapter9: chapter9,
+        chapter10: chapter10,
+        chapter11: chapter11,
+        chapter12: chapter12,
+        chapter13: chapter13,
+        chapter14: chapter14,
+        chapter15: chapter15,
+        chapter16: chapter16,
+        chapter17: chapter17,
+        chapter18: chapter18,
+        chapter19: chapter19,
+        chapter20: chapter20,
+        chapter21: chapter21,
+        chapter22: chapter22,
+        chapter23: chapter23,
+        chapter24: chapter24,
+        chapter25: chapter25,
+      };
+
+      // 初始化思维导图
+      function initMindmap(data) {
+        const {Markmap, deriveOptions} = window.markmap;
+        const options = deriveOptions({
+          color: () => '#2c3e50',
+          nodeFont: '14px "Microsoft YaHei", sans-serif',
+          linkWidth: 1.5,
+          duration: 400,
+          paddingX: 12,
+          spacingVertical: 12,
+          spacingHorizontal: 80,
+          initialExpandLevel: expandedLevel, // 设置初始展开层级
+        });
+
+        // 清除现有思维导图
+        d3.select('#mindmap').selectAll('*').remove();
+
+        // 创建Markmap实例
+        mm = Markmap.create('svg#mindmap', options, data);
+
+        // 更新标题
+        document.querySelector('.header h1').textContent = data.title || '刑法学习系统';
+      }
+
+      // 加载章节数据
+      function loadChapter(chapterId) {
+        const loader = document.getElementById('loader');
+        loader.style.display = 'block';
+
+        // 模拟从外部文件加载数据（实际项目中可替换为真实API调用）
+        setTimeout(() => {
+          const chapterData = chaptersData[chapterId];
+          if (chapterData) {
+            initMindmap(chapterData);
+          } else {
+            console.error('章节数据不存在:', chapterId);
+          }
+          loader.style.display = 'none';
+        }, 500);
+      }
+
+      function zoomIn() {
+        if (zoomLevel >= 2) return;
+        zoomLevel += 0.1;
+        applyZoom();
+      }
+
+      function zoomOut() {
+        if (zoomLevel <= 0.3) return;
+        zoomLevel -= 0.1;
+        applyZoom();
+      }
+
+      function resetZoom() {
+        zoomLevel = 1;
+        applyZoom();
+      }
+
+      function applyZoom() {
+        const mindmap = document.getElementById('mindmap');
+        mindmap.style.transform = `scale(${zoomLevel})`;
+        mindmap.style.transformOrigin = 'center';
+        document.getElementById('zoomLevel').textContent = `${Math.round(zoomLevel * 100)}%`;
+      }
+
+      // 旋转功能
+      function toggleRotation() {
+        const container = document.getElementById('mindmap-container');
+        isRotated = !isRotated;
+
+        if (isRotated) {
+          container.classList.add('rotated');
+        } else {
+          container.classList.remove('rotated');
+        }
+      }
+
+      // 展开/折叠功能
+      function expandAll() {
+        expandedLevel = 99;
+        mm.setData(mm.state.data, {initialExpandLevel: expandedLevel});
+      }
+
+      function collapseAll() {
+        expandedLevel = 1;
+        mm.setData(mm.state.data, {initialExpandLevel: expandedLevel});
+      }
+
+      // 头部收起功能
+      function toggleHeader() {
+        const container = document.querySelector('.container');
+        isHeaderCollapsed = !isHeaderCollapsed;
+
+        if (isHeaderCollapsed) {
+          container.classList.add('header-collapsed');
+        } else {
+          container.classList.remove('header-collapsed');
+        }
+      }
+
+      // 全屏功能
+      function toggleFullscreen() {
+        const container = document.querySelector('.container');
+
+        if (!isFullscreen) {
+          if (container.requestFullscreen) {
+            container.requestFullscreen();
+          } else if (container.mozRequestFullScreen) {
+            container.mozRequestFullScreen();
+          } else if (container.webkitRequestFullscreen) {
+            container.webkitRequestFullscreen();
+          } else if (container.msRequestFullscreen) {
+            container.msRequestFullscreen();
+          }
+
+          isFullscreen = true;
+          document.body.classList.add('fullscreen-mode');
+          document.getElementById('fullscreenBtn').innerHTML = '<i class="fas fa-compress"></i>';
+
+          // 添加双击事件监听
+          document
+            .getElementById('mindmap-container')
+            .addEventListener('dblclick', toggleFullscreen);
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+          } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+          }
+
+          isFullscreen = false;
+          document.body.classList.remove('fullscreen-mode');
+          document.getElementById('fullscreenBtn').innerHTML = '<i class="fas fa-expand"></i>';
+
+          // 移除双击事件监听
+          document
+            .getElementById('mindmap-container')
+            .removeEventListener('dblclick', toggleFullscreen);
+        }
+      }
+
+      // 初始化
+      window.addEventListener('DOMContentLoaded', () => {
+        // 加载默认章节
+        loadChapter('chapter1');
+
+        // 添加事件监听器
+        document.getElementById('zoomInBtn').addEventListener('click', zoomIn);
+        document.getElementById('zoomOutBtn').addEventListener('click', zoomOut);
+        document.getElementById('resetBtn').addEventListener('click', resetZoom);
+        document.getElementById('toggleHeaderBtn').addEventListener('click', toggleHeader);
+        document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
+
+        // 章节选择监听
+        document.getElementById('chapterSelect').addEventListener('change', function () {
+          loadChapter(this.value);
+        });
+
+        // 移动端提示
+        setTimeout(() => {
+          document.getElementById('mobileTip').style.display = 'none';
+        }, 3000);
+
+        // 监听全屏变化
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+        document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+      });
+
+      function handleFullscreenChange() {
+        const container = document.querySelector('.container');
+        isFullscreen = !!(
+          document.fullscreenElement ||
+          document.webkitFullscreenElement ||
+          document.mozFullScreenElement ||
+          document.msFullscreenElement
+        );
+
+        if (isFullscreen) {
+          container.classList.add('fullscreen');
+          document.getElementById('fullscreenBtn').innerHTML = '<i class="fas fa-compress"></i>';
+        } else {
+          container.classList.remove('fullscreen');
+          document.getElementById('fullscreenBtn').innerHTML = '<i class="fas fa-expand"></i>';
+        }
+      }
+    </script>
+  </body>
+</html>
