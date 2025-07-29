@@ -2232,14 +2232,8 @@ var chapter19 = {
                         "tag": "li",
                         "lines": "104,299"
                     }
-                }
-            ],
-            "payload": {
-                "tag": "li",
-                "lines": "12,299"
-            }
-        },
-        {
+                },
+                     {
             "content": "\n<p data-lines=\"299,300\">第三类 恐怖活动型</p>",
             "children": [
                 {
@@ -3650,6 +3644,13 @@ var chapter19 = {
                 "lines": "329,482"
             }
         }
+            ],
+            "payload": {
+                "tag": "li",
+                "lines": "12,299"
+            }
+        },
+   
     ],
     "payload": {
         "tag": "h2",
