@@ -3421,51 +3421,33 @@ var chapter22 = {
                                             "content": "（六）诈骗罪的罪数问题",
                                             "children": [
                                                 {
-                                                    "content": "",
+                                                    "content": "1. 以诈骗罪论处情形",
                                                     "children": [
-                                                        {
-                                                            "content": "1. 以诈骗罪论处情形",
-                                                            "children": [],
-                                                            "payload": {
-                                                                "tag": "li",
-                                                                "lines": "451,452",
-                                                                "listIndex": 1
-                                                            }
-                                                        },
-                                                        {
-                                                            "content": "",
-                                                            "children": [
-                                                                {
-                                                                    "content": "骗社保金/保障待遇（如伪造材料骗养老金 ）",
-                                                                    "children": [],
-                                                                    "payload": {
-                                                                        "tag": "li",
-                                                                        "lines": "452,453"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "content": "伪造/使用停止流通货币（如用假旧币骗人 ）",
-                                                                    "children": [],
-                                                                    "payload": {
-                                                                        "tag": "li",
-                                                                        "lines": "453,454"
-                                                                    }
-                                                                },
-                                                                {
-                                                                    "content": "骗办电信卡造成资费损失（如假身份证办卡欠费 ）",
-                                                                    "children": [],
-                                                                    "payload": {
-                                                                        "tag": "li",
-                                                                        "lines": "454,455"
-                                                                    }
+                                                            {
+                                                                "content": "骗社保金/保障待遇（如伪造材料骗养老金 ）",
+                                                                "children": [],
+                                                                "payload": {
+                                                                    "tag": "li",
+                                                                    "lines": "452,453"
                                                                 }
-                                                            ],
-                                                            "payload": {
-                                                                "tag": "ul",
-                                                                "lines": "452,455"
+                                                            },
+                                                            {
+                                                                "content": "伪造/使用停止流通货币（如用假旧币骗人 ）",
+                                                                "children": [],
+                                                                "payload": {
+                                                                    "tag": "li",
+                                                                    "lines": "453,454"
+                                                                }
+                                                            },
+                                                            {
+                                                                "content": "骗办电信卡造成资费损失（如假身份证办卡欠费 ）",
+                                                                "children": [],
+                                                                "payload": {
+                                                                    "tag": "li",
+                                                                    "lines": "454,455"
+                                                                }
                                                             }
-                                                        }
-                                                    ],
+                                                        ],
                                                     "payload": {
                                                         "tag": "li",
                                                         "lines": "451,455"

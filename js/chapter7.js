@@ -987,7 +987,14 @@ var chapter7 = {
                                 "lines": "126,130"
                             }
                         },
-                        {
+              
+                    ],
+                    "payload": {
+                        "tag": "li",
+                        "lines": "124,225"
+                    }
+                },
+                          {
                             "content": "事实认识错误",
                             "children": [
                                 {
@@ -1648,12 +1655,6 @@ var chapter7 = {
                                 "lines": "130,225"
                             }
                         }
-                    ],
-                    "payload": {
-                        "tag": "li",
-                        "lines": "124,225"
-                    }
-                }
             ],
             "payload": {
                 "tag": "h2",

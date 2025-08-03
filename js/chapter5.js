@@ -153,6 +153,34 @@ var chapter5 = {
             }
           ],
           payload: {tag: 'h3', lines: '30,31'}
+        },
+        {
+          content: '（七）总结',
+          children: [
+            {
+              content: '作为： 叫你不做你非做，主动使坏（拿刀故意杀人啥的）',
+              children: [],
+              payload: {tag: 'li', lines: '31,32'}
+            },
+            {
+              content: '不作为：叫你做你不做（比如拒不执行判决等）',
+              children: [
+              {
+                content: '纯正不作为：装聋作哑（遗弃罪）',
+                children: [],
+                payload: {tag: 'li', lines: '33,34'}
+              },
+              {
+                content: '不纯正不作为：装瞎不救（如故意不喂养婴儿致死）',
+                children: [],
+                payload: {tag: 'li', lines: '34,36'}
+              }
+              ],
+              payload: {tag: 'li', lines: '32,33'}
+            },
+            
+          ],
+          payload: {tag: 'h3', lines: '30,31'}
         }
       ],
       payload: {tag: 'h2', lines: '4,5'}

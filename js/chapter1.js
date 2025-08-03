@@ -568,12 +568,12 @@ var chapter1 = {
               content: '基本内容',
               children: [
                 {
-                  content: '刑罚轻重与客观犯罪行为、危害结果适应（依社会危害程度定刑罚 ）',
+                  content: '与客观犯罪行为及危害结果相适应：按照犯罪行为对社会造成的实际危害程度决定刑罚轻重',
                   children: [],
                   payload: {tag: 'li', lines: '113,114'},
                 },
                 {
-                  content: '刑罚轻重与犯罪人主观恶性、再犯危险性适应',
+                  content: '与犯罪人主观恶性、再犯危险性相适应：考虑犯罪人主观恶性深浅、再次犯罪危险性大小',
                   children: [],
                   payload: {tag: 'li', lines: '114,115'},
                 },
@@ -581,7 +581,7 @@ var chapter1 = {
               payload: {tag: 'li', lines: '112,115'},
             },
             {
-              content: '公式：刑罚轻重=社会危害性+主观恶性+再犯可能性',
+              content: '总结：刑罚轻重=社会危害性+主观恶性+再犯可能性',
               children: [],
               payload: {tag: 'li', lines: '115,116'},
             },
@@ -591,20 +591,68 @@ var chapter1 = {
                 {
                   content:
                     '总则量刑原则：依犯罪事实、性质、情节、危害程度量刑，使刑罚与社会危害性适应',
-                  children: [],
+                  children: [
+                    {
+                      content: '内容：“对于犯罪分子决定刑罚的时候，应当根据犯罪的事实、犯罪的性质、情节和对于社会的危害程度，依照本法的有关规定判处。”',
+                      children: [],
+                      payload: {tag: 'li', lines: '116,117'},
+                    },
+                    {
+                      content: '要求：裁量刑罚时，使刑罚与具体犯罪行为的社会危害性相适应，罚当其罪',
+                      children: [],
+                      payload: {tag: 'li', lines: '117,118'},
+                    },
+                  ],
                   payload: {tag: 'li', lines: '117,118'},
                 },
                 {
                   content:
-                    '总则量刑规则：累犯从重，未成年等从宽，中止犯、过失犯处罚轻于既遂、故意犯（体现与主观恶性、人身危险性适应 ）',
-                  children: [],
+                    '刑法总则中的量刑规则',
+                  children: [
+                    {
+                      content: '从重/限制：对累犯从重处罚、不得假释、不得缓刑。',
+                      children: [],
+                      payload: {tag: 'li', lines: '118,119'},
+                    },
+                    {
+                      content: '从宽：对未成年人、又聋又哑的人、限制刑事责任能力人、自首、立功的人从宽处理。',
+                      children: [],
+                      payload: {tag: 'li', lines: '119,120'},
+                    },
+                       {
+                      content: '区别对待：对过失犯处罚明显轻缓于故意犯。',
+                      children: [],
+                      payload: {tag: 'li', lines: '118,119'},
+                    },
+                    {
+                      content: '体现：刑罚与犯罪人主观恶性、人身危险性相适应。',
+                      children: [],
+                      payload: {tag: 'li', lines: '119,120'},
+                    },
+                  ],
                   payload: {tag: 'li', lines: '118,119'},
                 },
                 {
-                  content: '分则法定刑：对各罪依性质、情节、危害程度定法定刑，重罪重刑，轻罪轻刑',
-                  children: [],
+                  content: '刑法分则规定',
+                  children: [
+                    {
+                      content: '对每一个罪根据其犯罪性质、情节和社会危害程度规定相应法定刑。',
+                      children: [],
+                      payload: {tag: 'li', lines: '120,121'},
+                    },
+                    {
+                      content: '原则：重罪适用重刑，轻罪适用轻刑。',
+                      children: [],
+                      payload: {tag: 'li', lines: '121,122'},
+                    },
+                  ],
                   payload: {tag: 'li', lines: '119,120'},
                 },
+              {
+                  content: '解题技巧: 单选择优选，关键看题眼；优待歧视不平等，刑罚轻重要适应。',
+                  children:[],
+                   payload: {tag: 'li', lines: '119,120'},
+              }
               ],
               payload: {tag: 'li', lines: '116,120'},
             },

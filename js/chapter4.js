@@ -16,8 +16,24 @@ var chapter4 = {
                     payload: { tag: 'li', lines: '2,3' }
                 },
                 {
-                    content: '分类：一般客体（一切犯罪共同侵害的社会利益总体 ）、同类客体（某一类犯罪共同侵害的社会利益 ）、直接客体（某一犯罪直接侵害的特定社会利益 ，含简单/复杂客体，复杂客体分主要、次要客体 ）',
-                    children: [],
+                    content: '分类：',
+                    children: [
+                        {
+                            content: '一般客体（一切犯罪共同侵害的社会利益总体 ）',
+                            children: [],
+                            payload: { tag: 'li', lines: '3,4' }
+                        },
+                        {
+                            content: '同类客体（某一类犯罪共同侵害的社会利益 ）',
+                            children: [ ],
+                            payload: { tag: 'li', lines: '4,5' }
+                        },
+                             {
+                            content: '直接客体（某一犯罪直接侵害的特定社会利益 ，含简单/复杂客体，复杂客体分主要、次要客体 ）',
+                            children: [],
+                            payload: { tag: 'li', lines: '3,4' }
+                        },
+                    ],
                     payload: { tag: 'li', lines: '3,4' }
                 },
                 {
